@@ -1,0 +1,110 @@
+import React, { useEffect, useState } from "react";
+import { Button, Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { allWorkoutsAPI, removeWorkoutAPI } from "../services/allAPI";
+import SERVER_URL from "../services/serverURL";
+import Edit from "../components/Edit";
+
+const AdminHome = () => {
+  const [searchKey, setSearchKey] = useState("");
+  const [allWorkouts, setAllWorkouts] = useState([]);
+  console.log(allWorkouts);
+
+  useEffect(() => {
+    getAllWorkouts();
+  }, [searchKey]);
+
+  const getAllWorkouts = async () => {
+    const token = localStorage.getItem("adminToken");
+    if (token) {
+      const reqHeader = {
+        Authorization: `Bearer ${token}`,
+      };
+      try {
+        const result = await allWorkoutsAPI(searchKey, reqHeader);
+        if (result.status === 200) {
+          setAllWorkouts(result.data);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
+
+  const deleteWorkout= async (id)=>{
+    const token = localStorage.getItem('adminToken')
+    if(token){
+      //api call
+      const reqHeader={
+        "Authorization": `Bearer ${token}`
+      }
+      try{
+        await removeWorkoutAPI(id,reqHeader)
+        getAllWorkouts()
+
+      }catch(err){
+        console.log(err);
+        
+      }
+   }
+  }
+
+  return (
+    <Container>
+      {/* upload button */}
+      <Link to={"/adminAddWorkout"}>
+        <div className="text-end mt-5">
+          <Button variant="warning">
+            <i className="fa-solid fa-plus rounded-circle bg-white text-black p-2 me-1"></i>{" "}
+            <span className="fw-bold">Upload Workout</span>
+          </Button>
+        </div>
+      </Link>
+
+      {/* search block */}
+      <div className="d-flex justify-content-between mt-5 mb-3">
+        <h2 className="text-primary">Uploaded Workouts</h2>
+        <input
+          onChange={(e) => setSearchKey(e.target.value)}
+          placeholder="Search workouts"
+          type="text"
+          className="form-control w-25"
+        />
+      </div>
+
+      
+
+      {allWorkouts.length > 0 ? (
+        allWorkouts.map((workout, index) => (
+          <Row key={index} className="p-2 bg-white align-items-center rounded mb-2">
+            <Col md={1} className="text-start">
+              <i className="fa-solid fa-bars"></i>
+            </Col>
+            <Col md={4} className="text-start">
+              <img height={'200px'}
+                className="w-50"
+                src={`${SERVER_URL}/uploads/${workout?.workoutImg}`}
+                alt='no image'
+              />
+            </Col>
+            <Col md={3} className="text-start">
+              <h3 className="mb-0 text-black">{workout?.workoutName }</h3>
+            </Col>
+            <Col md={2} className="text-center">
+              
+              <Edit />
+            </Col>
+            <Col md={2} className="text-center">
+              {/* <i className="fa-solid fa-trash fs-4 text-danger"></i> */}
+              <button onClick={()=>deleteWorkout(workout?._id)} className='btn text-danger'> <i className='fa-solid fa-trash'></i></button>
+            </Col>
+          </Row>
+        ))
+      ) : (
+        <p className="text-center text-muted">No workouts found.</p>
+      )}
+    </Container>
+  );
+};
+
+export default AdminHome;
