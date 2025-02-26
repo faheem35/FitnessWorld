@@ -42,12 +42,12 @@ export const allWorkoutsAPI=async(searchKey,reqHeader)=>{
           return await commonAPI("GET",`${SERVER_URL}/all-workouts?search=${searchKey}`,{},reqHeader)
 }
 
-// //updateWorkoutAPI called by Edit compoenent when user clicked on update button (/workouts/6799e19dd12049f0300fc494/edit)
-// export const updateWorkoutAPI=async(id,reqBody,reqHeader)=>{
-//           return await commonAPI("PUT",`${SERVER_URL}/workouts/${id}/edit`,reqBody,reqHeader)
-// }
-
 //removeWorkoutAPI called by View compoenent when user clicked on delete button (/workouts/6799e19dd12049f0300fc494/remove)
 export const removeWorkoutAPI=async(id,reqHeader)=>{
           return await commonAPI("DELETE",`${SERVER_URL}/workouts/${id}/remove`,{},reqHeader)
+}
+
+//updateWorkoutAPI called by Edit compoenent when user clicked on update button (/workouts/6799e19dd12049f0300fc494/edit)
+export const updateWorkoutAPI=async(id,reqBody,reqHeader)=>{
+          return await commonAPI("PUT",`${SERVER_URL}/workouts/${id}/edit`,reqBody,reqHeader)
 }

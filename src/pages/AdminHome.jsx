@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { allWorkoutsAPI, removeWorkoutAPI } from "../services/allAPI";
 import SERVER_URL from "../services/serverURL";
 import Edit from "../components/Edit";
+import { editWorkoutResponseContext } from "../contexts/ContextApi";
 
 const AdminHome = () => {
+  const {editWorkoutResponse, setEditWorkoutResponse}=useContext(editWorkoutResponseContext)
+
   const [searchKey, setSearchKey] = useState("");
   const [allWorkouts, setAllWorkouts] = useState([]);
   console.log(allWorkouts);
 
   useEffect(() => {
     getAllWorkouts();
-  }, [searchKey]);
+  }, [searchKey,editWorkoutResponse]);
 
   const getAllWorkouts = async () => {
     const token = localStorage.getItem("adminToken");
@@ -75,8 +78,8 @@ const AdminHome = () => {
       
 
       {allWorkouts.length > 0 ? (
-        allWorkouts.map((workout, index) => (
-          <Row key={index} className="p-2 bg-white align-items-center rounded mb-2">
+        allWorkouts.map(workout => (
+          <Row key={workout?._id} className="p-2 bg-white align-items-center rounded mb-2">
             <Col md={1} className="text-start">
               <i className="fa-solid fa-bars"></i>
             </Col>
@@ -91,11 +94,10 @@ const AdminHome = () => {
               <h3 className="mb-0 text-black">{workout?.workoutName }</h3>
             </Col>
             <Col md={2} className="text-center">
-              
-              <Edit />
+               <Edit workout={workout}/>
             </Col>
             <Col md={2} className="text-center">
-              {/* <i className="fa-solid fa-trash fs-4 text-danger"></i> */}
+              
               <button onClick={()=>deleteWorkout(workout?._id)} className='btn text-danger'> <i className='fa-solid fa-trash'></i></button>
             </Col>
           </Row>

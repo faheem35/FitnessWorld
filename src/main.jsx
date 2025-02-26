@@ -21,15 +21,18 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import './index.css';
 import './bootstrap.min.css';
 import App from './App.jsx';
+import ContextApi from './contexts/ContextApi.jsx';
 
 const CLIENT_ID = "YOUR_GOOGLE_CLIENT_ID"; // Replace with your actual Google Client ID
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GoogleOAuthProvider clientId={CLIENT_ID}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <ContextApi>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ContextApi>
     </GoogleOAuthProvider>
   </StrictMode>
 );
