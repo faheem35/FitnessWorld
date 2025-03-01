@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Container, Navbar } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
-// import { tokenAuthContext } from '../contexts/AuthContextAPI'
+import { tokenAuthContext } from '../contexts/AuthContextAPI'
 
 
 
@@ -9,12 +9,12 @@ const Header = () => {
 
   const navigate =useNavigate()
 
-  // const { isAuthorised, setIsAuthorised } = useContext(tokenAuthContext)
+  const { isAuthorised, setIsAuthorised } = useContext(tokenAuthContext)
 
 
   const logout =()=>{
     localStorage.clear()
-    // setIsAuthorised(false)
+    setIsAuthorised(false)
     alert("logging out!...")
     navigate('/')
   }

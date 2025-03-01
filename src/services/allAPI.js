@@ -51,3 +51,9 @@ export const removeWorkoutAPI=async(id,reqHeader)=>{
 export const updateWorkoutAPI=async(id,reqBody,reqHeader)=>{
           return await commonAPI("PUT",`${SERVER_URL}/workouts/${id}/edit`,reqBody,reqHeader)
 }
+
+
+//allWorkoutsUsersideAPI 
+export const allWorkoutsUsersideAPI=async()=>{
+          return await commonAPI("GET",`${SERVER_URL}/all-workouts-userSide`,{})
+}

@@ -1,13 +1,16 @@
 
 
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import authImg from "../assets/loginRegisterImg-2.jpeg";
 import { FloatingLabel, Form } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { registerAPI, loginAPI } from '../services/allAPI'; 
+import { tokenAuthContext } from '../contexts/AuthContextAPI';
 
 const Auth = ({ insideRegister }) => {
+
+  const { isAuthorised, setIsAuthorised } = useContext(tokenAuthContext)
 
  
 
@@ -81,6 +84,8 @@ const Auth = ({ insideRegister }) => {
           // Save token or user data in localStorage/sessionStorage
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data.user));
+
+          setIsAuthorised(true) 
 
           // Redirect to home page
           navigate('/');

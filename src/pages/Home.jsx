@@ -27,9 +27,6 @@ const Home = () => {
   Your fitness journey starts here! Access expert workout plans, video tutorials, and much more to achieve your health goals. Let’s build a stronger, healthier you—one step at a time!
 </p>
 
-              {/* <Link to={'/login'} className="btn btn-warning btn-lg">
-                Start Exploring
-              </Link> */}
 
 {
                 localStorage.getItem("token")?
