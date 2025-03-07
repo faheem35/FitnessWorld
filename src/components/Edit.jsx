@@ -95,14 +95,14 @@ const EditWorkout = ({ workout }) => {
 
   return (
     <>
-      <button onClick={handleShow} className='btn'><i className='fa-solid fa-edit'></i></button>
+      <button onClick={handleShow} className='btn'><i className='fa-solid fa-edit text-success'></i></button>
 
-      <Modal centered size='lg' show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Update Workout Details</Modal.Title>
+      <Modal centered size='lg' show={show} onHide={handleClose} backdrop="static" keyboard={false} >
+        <Modal.Header closeButton className='bg-dark text-white'>
+          <Modal.Title >Update Workout Details</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <div className='row align-items-center'>
+        <Modal.Body className='bg-dark'>
+          <div className='row align-items-center '>
             <div className='col-lg-4'>
               <label>
                 <input onChange={e => setWorkoutDetails({ ...workoutDetails, workoutImg: e.target.files[0] })} type="file" style={{ display: 'none' }} />
@@ -130,11 +130,11 @@ const EditWorkout = ({ workout }) => {
             </div>
           </div>
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+        <Modal.Footer className='bg-dark text-white'>
+          <Button variant="danger" onClick={handleClose}>
             Cancel
           </Button>
-          <Button onClick={handleUpdateWorkout} variant="primary">Update</Button>
+          <Button onClick={handleUpdateWorkout} variant="success">Update</Button>
         </Modal.Footer>
       </Modal>
     </>

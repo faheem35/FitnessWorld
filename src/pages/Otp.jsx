@@ -83,8 +83,8 @@ const OTPVerification = () => {
   return (
     <Container className="d-flex justify-content-center align-items-center vh-100">
       <Row>
-        <Col md={12} className="text-center p-4 border rounded shadow bg-white">
-          <h3>OTP Verification</h3>
+        <Col md={12} className="text-center p-4 border rounded shadow ">
+          <h3 className="text-danger">OTP Verification</h3>
           <p>Enter the 6-digit OTP sent to {email || "your email"}.</p>
           {error && <Alert variant="danger">{error}</Alert>}
           {success && <Alert variant="success">{success}</Alert>}
@@ -96,14 +96,14 @@ const OTPVerification = () => {
                 value={otp}
                 onChange={handleChange}
                 placeholder="Enter OTP"
-                className="text-center"
+                className="text-center "
               />
             </Form.Group>
             <Button variant="primary" type="submit" className="w-100 mb-2">
               Verify OTP
             </Button>
           </Form>
-          <Button variant="link" onClick={handleResend} disabled={resendDisabled}>
+          <Button variant="warning"  onClick={handleResend} disabled={resendDisabled}>
             {resendDisabled ? `Resend OTP in ${timer}s` : "Resend OTP"}
           </Button>
         </Col>

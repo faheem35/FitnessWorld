@@ -57,3 +57,19 @@ export const updateWorkoutAPI=async(id,reqBody,reqHeader)=>{
 export const allWorkoutsUsersideAPI=async()=>{
           return await commonAPI("GET",`${SERVER_URL}/all-workouts-userSide`,{})
 }
+
+//userlistAPI 
+export const userlistAPI=async()=>{
+          return await commonAPI("GET",`${SERVER_URL}/userlist`,{})
+}
+
+
+// //usereditAPI
+// export const usereditAPI=async(id,reqBody)=>{
+//           return await commonAPI("PATCH",`${SERVER_URL}/workouts/${id}`,reqBody)
+// }
+
+export const usereditAPI = async (id, reqBody) => {
+          return await commonAPI("PATCH", `${SERVER_URL}/useredit/${id}`, reqBody);
+      };
+      

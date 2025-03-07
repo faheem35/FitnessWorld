@@ -29,12 +29,12 @@ const Workout = () => {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: '100px' }} className="container-fluid">
+      <div style={{ paddingTop: '100px' }} className="container-fluid bg-black ">
 
-        <h1>Welcome <span className="text-warning">{userName},</span></h1>
+        <h1 className='text-white mb-4'>Welcome <span className="text-warning">{userName},</span></h1>
 
 
-        <Container>
+        <Container >
 
 
 
@@ -49,12 +49,12 @@ const Workout = () => {
            
                </Link>
 
-              <Card.Body className='bg-secondary'>
-                <Card.Title className='text-white text-center'>Abs</Card.Title>
+              <Card.Body className='bg-light'>
+                <Card.Title className='text-black text-center'>Abs</Card.Title>
               </Card.Body>
             </Card></Col>
  {/* col 2 */}
-            <Col><Card style={{ width: '18rem' }} >
+            <Col><Card style={{ width: '18rem' }}  >
 
             <Link to={"/workout/chestWorkout"}>
               
@@ -62,8 +62,8 @@ const Workout = () => {
                
             </Link>
 
-              <Card.Body className='bg-secondary'>
-                <Card.Title className='text-white text-center'>Chest</Card.Title>
+              <Card.Body className='bg-light'>
+                <Card.Title className='text-black text-center'>Chest</Card.Title>
               </Card.Body>
             </Card></Col>
  {/* col 3 */}
@@ -75,15 +75,15 @@ const Workout = () => {
                 
   
                 </Link>
-              <Card.Body className='bg-secondary'>
-                <Card.Title className='text-white text-center'>Legs</Card.Title>
+              <Card.Body className='bg-light'>
+                <Card.Title className='text-black text-center'>Legs</Card.Title>
               </Card.Body>
             </Card></Col>
 
 
           </Row>
 
-          <Row className="mt-5">
+          <Row className="mt-5 ">
     {/* col 4 */}
             <Col><Card style={{ width: '18rem' }} >
 
@@ -93,8 +93,8 @@ const Workout = () => {
                
                </Link>
 
-              <Card.Body className='bg-secondary'>
-                <Card.Title className='text-white text-center'>Shoulders</Card.Title>
+              <Card.Body className='bg-white'>
+                <Card.Title className='text-black text-center'>Shoulders</Card.Title>
               </Card.Body>
             </Card></Col>
           </Row>

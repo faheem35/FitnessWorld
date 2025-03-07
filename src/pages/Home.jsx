@@ -8,7 +8,7 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <div
-        className="d-flex justify-content-center align-items-center min-vh-100 text-white "
+        className="d-flex justify-content-center align-items-center min-vh-100 text-white  "
         style={{
           backgroundImage: `url(${landingImg})`,
           backgroundSize: 'cover',
@@ -17,7 +17,7 @@ const Home = () => {
           filter: 'brightness(80%)',
         }}
       >
-        <Container>
+        <Container >
           <Row className="justify-content-center">
             <Col lg={6} className="p-4 rounded shadow bg-dark bg-opacity-75 text-center">
               <h1 className="display-3">
@@ -30,9 +30,9 @@ const Home = () => {
 
 {
                 localStorage.getItem("token")?
-                <Link to={'/workout'} className='btn btn-warning'>Let's Start Your Day</Link>
+                <Link to={'/workout'} className='btn btn-danger'>Let's Start Your Day</Link>
                 :
-                <Link to={'/login'} className='btn btn-warning'>Start to explore</Link>
+                <Link to={'/login'} className='btn btn-danger'>Start to explore</Link>
               }
 
             </Col>
@@ -41,14 +41,14 @@ const Home = () => {
       </div>
 
       {/* Image Section */}
-      <div>
+      {/* <div>
         <img width={'100%'} src="https://wallpapercave.com/wp/wp8235128.jpg" alt="Fitness" />
-      </div>
+      </div> */}
 
       {/* Features Section */}
-      <div className="mt-5 pt-5">
-        <Container>
-          <h1 className="text-white mb-4 text-center">Features</h1>
+      <div className="pt-5  bg-black">
+        <Container className='py-5'>
+          <h1 className="text-warning mb-4 text-center ">Features</h1>
           <Row>
             <Col md={4} className="mb-4">
               <Card className="h-100">
@@ -88,11 +88,11 @@ const Home = () => {
       </div>
 
       {/* Need of Workout Section */}
-      <div className="mt-5 py-5 ">
+      <div className=" py-5 bg-black">
         <Container fluid >
-          <Row className="border m-5 p-5 bg-black text-white rounded">
+          <Row className="border border-white m-5 p-5 bg-black text-white rounded">
             <Col lg={6} >
-              <h4 className="text-center mb-4 mt-5 fw-bold text-primary">Why Workout?</h4>
+              <h4 className="text-center mb-4 mt-3 fw-bold text-danger">Why Workout?</h4>
               <div className='d-flex '>
                 <i class="fa-regular fa-circle-dot me-3"></i>
                 <p>
