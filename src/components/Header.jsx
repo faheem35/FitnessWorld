@@ -83,6 +83,7 @@ const Header = () => {
             <Nav.Link as={Link} to="/chat" className="text-white me-3">FitBuddy</Nav.Link>
             <Nav.Link as={Link} to="/bmiCalc" className="text-white me-3">BMI Calculator</Nav.Link>
             <Nav.Link as={Link} to="/calorieCalc" className="text-white">Calorie Calculator</Nav.Link>
+            <Nav.Link as={Link} to="/userTrainerInteraction" className="text-white">Trainer Session</Nav.Link>
           </Nav>
 
           {/* Logout Button */}

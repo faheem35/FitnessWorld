@@ -24,6 +24,10 @@ import Chat from './pages/Chat'
 import AdminUploadedWorkouts from './pages/AdminUploadedWorkouts'
 import Layout from './components/adminShared/Layout'
 import AdminUserManagement from './pages/AdminUserManagement'
+import TrainerAuth from './pages/TrainerAuth'
+import TrainerHome from './pages/TrainerHome'
+import UserTrainerInteraction from './pages/UserTrainerInteraction'
+
 
 const LayoutWrapper = ({ children }) => {
   const location = useLocation();
@@ -77,6 +81,8 @@ function App() {
   <Route path="/workout/shoulderWorkout" element={<ShoulderWorkout />} />
   <Route path='/*' element={<Pnf />} />
   <Route path="/chat" element={<Chat/>} />
+  <Route path="/userTrainerInteraction" element={<UserTrainerInteraction/>} />
+ 
   
 
 
@@ -91,6 +97,16 @@ function App() {
   <Route path="/userManagemenet" element={<AdminUserManagement/>} />
   </Route>
   
+
+
+  {/* Trainer side */}
+  <Route path="/trainerLogin" element={<TrainerAuth />} />
+  <Route path="/trainerHome" element={<TrainerHome />} />
+
+
+
+
+
 </Routes>
 
 

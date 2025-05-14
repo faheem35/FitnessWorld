@@ -386,6 +386,8 @@ import { FloatingLabel, Form, Row, Col, Button, Card, Container } from 'react-bo
 import { Link, useNavigate } from 'react-router-dom';
 import { registerAPI, loginAPI } from '../services/allAPI'; 
 import { tokenAuthContext } from '../contexts/AuthContextAPI';
+import { GoogleLogin } from '@react-oauth/google';
+import { toast,ToastContainer } from 'react-toastify';
 
 const Auth = ({ insideRegister }) => {
   const { setIsAuthorised } = useContext(tokenAuthContext);
@@ -452,6 +454,32 @@ const Auth = ({ insideRegister }) => {
       }
     }
   };
+
+    const handleGoogleLogin = async (credentialResponse) => {
+    if (credentialResponse?.credential) {
+      try {
+        const credential = jwtDecode(credentialResponse.credential);
+        const { email, email_verified, given_name, family_name, sub } = credential;
+
+        const response = await axios.post('/google-login', {
+          email, email_verified, firstName: given_name, lastName: family_name, id: sub
+        });
+
+        const { token, user } = response.data;
+        dispatch(addToken(token));
+        dispatch(addUser(user));
+
+        localStorage.setItem('token', token);
+        localStorage.setItem('user', JSON.stringify(user));
+
+        toast.success('Google Login successful!');
+        navigate('/');
+      } catch (error) {
+        toast.error(error.response?.data?.message || 'Google Login failed.');
+      }
+    }
+  };
+
 
   return (
     <div className="d-flex justify-content-center align-items-center" 
@@ -553,7 +581,13 @@ const Auth = ({ insideRegister }) => {
                 {insideRegister ? "Login" : "Register"}
               </Link>
             </p>
+              
           </Form>
+
+          <ToastContainer/>
+          
+          <GoogleLogin onSuccess={handleGoogleLogin} onError={() => toast.error('Google Login failed.')} />
+
         </Card>
       </Container>
     </div>

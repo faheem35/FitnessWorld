@@ -18,7 +18,7 @@ const Home = () => {
         }}
       >
         <Container >
-          <Row className="justify-content-center">
+          <Row className="justify-content-center ">
             <Col lg={6} className="p-4 rounded shadow bg-dark bg-opacity-75 text-center">
               <h1 className="display-3">
                 <i className="fa-solid fa-dumbbell"></i> Fitness World
@@ -46,7 +46,7 @@ const Home = () => {
       </div> */}
 
       {/* Features Section */}
-      <div className="pt-5  bg-black">
+      <div className="pt-5  bg-black" >
         <Container className='py-5'>
           <h1 className="text-warning mb-4 text-center ">Features</h1>
           <Row>
@@ -88,7 +88,14 @@ const Home = () => {
       </div>
 
       {/* Need of Workout Section */}
-      <div className=" py-5 bg-black">
+
+
+ <div
+  className="py-5 bg-black"
+  
+>
+ 
+
         <Container fluid >
           <Row className="border border-white m-5 p-5 bg-black text-white rounded">
             <Col lg={6} >

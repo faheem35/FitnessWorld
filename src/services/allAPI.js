@@ -73,3 +73,8 @@ export const usereditAPI = async (id, reqBody) => {
           return await commonAPI("PATCH", `${SERVER_URL}/useredit/${id}`, reqBody);
       };
       
+
+      //trainerLoginAPI called by TrainerAuth page when user clicks on login button
+export const trainerLoginAPI=async(reqBody)=>{
+    return await commonAPI("POST",`${SERVER_URL}/trainerlogin`,reqBody)
+}
